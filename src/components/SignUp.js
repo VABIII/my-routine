@@ -21,10 +21,9 @@ const SignUp = () => {
     const [errors, setErrors] = useState(signUpErrors);
 
     const postUser = user => {
-        axios.post('/user/register', user)
+        axios.post(`http://localhost:4000/api/auth/register`, user)
             .then(res => {
-                const token = res.data.token;
-                localStorage.setItem('token', token);
+                setFormVals(initialValues);
                 window.location.href = '/';
                 }
             )
