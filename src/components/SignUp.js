@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const initialValues = {
     username: "",
@@ -10,6 +11,9 @@ const initialValues = {
 
 const SignUp = () => {
     const [formVals, setFormVals] = useState(initialValues);
+
+
+
 
 
 
