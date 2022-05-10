@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import axios from "axios";
 
 const initialValues = {
+    username: "",
+    fullName: "",
+    email: "",
+    password: ""
+}
+
+const signUpErrors = {
     username: "",
     fullName: "",
     email: "",
@@ -11,11 +18,23 @@ const initialValues = {
 
 const SignUp = () => {
     const [formVals, setFormVals] = useState(initialValues);
+    const [errors, setErrors] = useState(signUpErrors);
 
+    const postUser = user => {
+        axios.post('/user/register', user)
+            .then(res => {
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                window.location.href = '/';
+                }
+            )
+            .catch(err => console.error(err));
+    }
 
-
-
-
+    const onSubmit = evt => {
+        evt.preventDefault();
+        postUser(formVals);
+    }
 
     const onChange = evt => {
         let name = evt.target.name;
@@ -24,15 +43,12 @@ const SignUp = () => {
         setFormVals({
             ...formVals,
             [name]: value
-        })
-        console.log(formVals)
-
-
+        });
     }
 
     return (
         <div className="signup-container">
-            <form id="signup-form">
+            <form id="signup-form" onSubmit={onSubmit}>
                 <div className="header">
                     <h2>Create an account</h2>
                     <p>Already have an account? <a href="/login">Login here</a></p>
