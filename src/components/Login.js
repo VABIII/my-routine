@@ -13,11 +13,23 @@ const Login = (props) => {
     const [values, setValues] = useState(initialValues);
 
     const login = creds => {
-        axios.post('/', creds)
+        axios.post('http://localhost:4000/api/auth/login', creds)
             .then(res => {
-
+                const user = res.data.user;
+                const token = res.data.token;
+                localStorage.setItem('token', token);
+                setUser({
+                    user_id: user.user_id,
+                    username: user.username
+                });
+                window.location.href = '/';
             })
             .catch(err => console.error(err))
+    }
+
+    const onSubmit = evt => {
+        evt.preventDefault();
+        login(values);
     }
 
     const onChange = evt => {
@@ -32,7 +44,7 @@ const Login = (props) => {
 
     return (
         <div className="login-container">
-            <form className="login-form">
+            <form className="login-form" onSubmit={onSubmit}>
                 <div className="login-header">
                     <h2>Login</h2>
                     <p>Don't have an account? <a href="/signup">Sign Up Here!</a></p>

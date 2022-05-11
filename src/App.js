@@ -9,7 +9,7 @@ import Login from "./components/Login";
 
 function App() {
     const [user, setUser] = useState({});
-
+    console.log(user)
 
   return (
     <div className="App">
@@ -19,7 +19,7 @@ function App() {
         <div className='body-container'>
             <Switch>
                 <Route path="/login">
-                    <Login setUser={setUser} />
+                    <Login setUser={setUser} user={user} />
                 </Route>
                 <Route path="/signup" component={SignUp}/>
                 <Route path='/' component={Home}/>
