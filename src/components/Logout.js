@@ -1,7 +1,9 @@
 
-const Logout = () => {
-    localStorage.removeItem('token')
-    window.location.href='/'
+const Logout = (props) => {
+    const { setUser } = props;
+    setUser({});
+    localStorage.removeItem('token');
+    window.location.href='/';
     return (<div></div>);
 };
 

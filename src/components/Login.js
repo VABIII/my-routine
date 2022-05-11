@@ -47,7 +47,6 @@ const Login = (props) => {
             <form className="login-form" onSubmit={onSubmit}>
                 <div className="login-header">
                     <h2>Login</h2>
-                    <p>Don't have an account? <a href="/signup">Sign Up Here!</a></p>
                 </div>
                 <div className="signup-input-container">
                     <label htmlFor="username">Username:&nbsp;</label>
@@ -58,7 +57,8 @@ const Login = (props) => {
                         value={values.username}
                         onChange={onChange}
                     />
-                    <label htmlFor="password">Password:&nbsp;</label>
+
+                    <label htmlFor="password">&nbsp;Password:&nbsp;</label>
                     <input
                         type="text"
                         id="password"
@@ -66,7 +66,12 @@ const Login = (props) => {
                         value={values.password}
                         onChange={onChange}
                     />
+                    <br/>
+                    <br/>
                     <button id="login-button">Login</button>
+                </div>
+                <div>
+                    <p>Don't have an account? <a href="/signup">Sign Up Here!</a></p>
                 </div>
             </form>
 

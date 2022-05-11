@@ -22,7 +22,9 @@ function App() {
                 <Route path="/login">
                     <Login setUser={setUser} user={user} />
                 </Route>
-                <Route path='/logout' component={Logout}/>
+                <Route path='/logout'>
+                    <Logout setUser={setUser} />
+                </Route>
                 <Route path="/signup" component={SignUp}/>
                 <Route path='/' component={Home}/>
 
