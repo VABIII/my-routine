@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
@@ -8,6 +8,9 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 
 function App() {
+    const [user, setUser] = useState({});
+
+
   return (
     <div className="App">
       <div className='header-container'>
@@ -15,8 +18,10 @@ function App() {
       </div>
         <div className='body-container'>
             <Switch>
-                <Route path="/login" component={Login}/>
-                <Route path="/sign-up" component={SignUp}/>
+                <Route path="/login">
+                    <Login setUser={setUser} />
+                </Route>
+                <Route path="/signup" component={SignUp}/>
                 <Route path='/' component={Home}/>
 
 
