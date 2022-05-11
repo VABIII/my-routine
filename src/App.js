@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 function App() {
     const [user, setUser] = useState({});
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/login">
                     <Login setUser={setUser} user={user} />
                 </Route>
+                <Route path='/logout' component={Logout}/>
                 <Route path="/signup" component={SignUp}/>
                 <Route path='/' component={Home}/>
 
