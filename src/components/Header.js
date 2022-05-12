@@ -10,6 +10,7 @@ const Header = () => {
             {!token && <a href="/signup">Sign Up</a>}
             {!token && <a href="/login">Login</a>}
             {token && <a href="/logout">Logout</a>}
+            {token && <a href="/routine">My Routine</a>}
 
         </div>
     );
