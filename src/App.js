@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
@@ -7,10 +7,18 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import MyRoutine from "./components/MyRoutine";
+import axios from "axios";
 
 function App() {
     const [user, setUser] = useState({});
     console.log(user)
+    useEffect(() => {
+        axios.get(`http://localhost:4000/api/user/1`)
+            .then(res => setUser(res.data))
+            .catch(err => console.error(err))
+    }, [])
+
 
   return (
     <div className="App">
@@ -19,6 +27,9 @@ function App() {
       </div>
         <div className='body-container'>
             <Switch>
+                <Route path="/routine">
+                    <MyRoutine setUser={setUser} user={user} />
+                </Route>
                 <Route path="/login">
                     <Login setUser={setUser} user={user} />
                 </Route>

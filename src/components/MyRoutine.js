@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
 const MyRoutine = props => {
-    const {} = props;
+    const {user} = props;
+
+    useEffect(() => {
+
+
+    }, [])
 
     return (
-        <div>
-            <h1>Hi!</h1>
+        <div className='routine-container'>
+            <div>
+                <h1>Hi {user.fullName}!</h1>
+            </div>
         </div>
     );
 };
